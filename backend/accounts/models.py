@@ -13,3 +13,8 @@ class User(AbstractUser):
         choices=Role.choices,
         default=Role.SEEKER,
     )
+
+def save(self, *args, **kwargs):
+        if self.is_superuser:
+            self.role = "admin"
+        super().save(*args, **kwargs)

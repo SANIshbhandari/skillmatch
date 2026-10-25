@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'profiles',
     'skills',
+    'rest_framework_simplejwt.token_blacklist',
     'jobs',
     'matching',
 ]
@@ -58,6 +59,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 
 TEMPLATES = [
     {
